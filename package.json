@@ -1,0 +1,38 @@
+{
+  "name": "vue-webpack4-ele",
+  "version": "1.0.0",
+  "description": "vue+webpack+elementUI",
+  "author": "vickiZheng7 <vicki.Zhengwq@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server --config build/webpack.dev.js",
+    "build:dev": "webpack --config build/webpack.dev.js",
+    "build:prod": "webpack --config build/webpack.prod.js"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "element-ui": "^2.4.11",
+    "jquery": "^3.3.1",
+    "vue": "^2.5.21",
+    "vue-router": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.0",
+    "autoprefix": "^1.0.1",
+    "babel-loader": "^8.0.4",
+    "clean-webpack-plugin": "^1.0.0",
+    "css-loader": "^2.0.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "less-loader": "^4.1.0",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "vue-loader": "^15.4.2",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-merge": "^4.1.5"
+  }
+}
