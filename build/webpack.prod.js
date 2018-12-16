@@ -6,7 +6,16 @@ module.exports = merge(common, {
     devtool: "source-map",
     optimization: {
         splitChunks: {
-
+            cacheGroups: {
+                vendor1: {
+                    chunks: "initial",
+                    test: /element-ui/
+                },
+                vendor2: {
+                    chunks: "initial",
+                    test: /jquery|vue|vue-router/
+                }
+            }
         },
         runtimeChunk: {
             name: "manifest"

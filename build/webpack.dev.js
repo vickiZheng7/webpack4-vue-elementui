@@ -9,7 +9,6 @@ module.exports = merge(common, {
         new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
-        hot: true,
         host: "0.0.0.0",
         port: 9000
     }

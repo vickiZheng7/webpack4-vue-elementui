@@ -1,6 +1,8 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const getPath = (file) => {
     return path.resolve(__dirname, file);
@@ -20,24 +22,32 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader", "postcss-loader"]
+            },
+            {
                 test: /\.less$/,
-                loader: ["css-loader", "style-loader", "postcss-loader", "less-loader"]
+                use: ["style-loader", "css-loader", "postcss-loader", "less-loader"]
             },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel-loader"
+                use: "babel-loader"
             },
             {
                 test: /\.vue$/,
-                loader: "vue-loader"
+                use: "vue-loader"
             },
             {
-                test: /\.(png|jpg|gif)$/,
-                loader: "url-loader",
-                options: {
-                    limit: 10000
-                }
+                test: /\.(png|jpg|gif|woff|svg|eot|ttf)$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 10000
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -55,6 +65,19 @@ module.exports = {
         //生成html文件
         new HtmlWebpackPlugin({
             template: "./src/index.html"
-        })
-    ]
+        }),
+        //自动加载模块，不用到处import
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        }),
+        new VueLoaderPlugin(),
+    ],
+    resolve: {
+        alias: {
+            "~": getPath("../src"),
+            //https://www.cnblogs.com/xiangxinhouse/p/8447507.html
+            'vue$': 'vue/dist/vue.js'
+        }
+    }
 };
