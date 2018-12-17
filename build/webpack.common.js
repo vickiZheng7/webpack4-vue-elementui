@@ -12,8 +12,7 @@ module.exports = {
     //基础目录，用于配置中解析入口起点和loader
     context: getPath("../"),
     entry: {
-        vendor: "@babel/polyfill",
-        main: "./src/main.js"
+        main: ["@babel/polyfill", "./src/main.js"]
     },
     output: {
         filename: "[name].[hash].js",
